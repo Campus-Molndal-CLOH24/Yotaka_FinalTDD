@@ -13,7 +13,6 @@
     <Folder Include="Booksystem\" />
     <Folder Include="Null_check\" />
     <Folder Include="Warehouse\" />
-    <Folder Include="StringHandling\" />
   </ItemGroup>
 
 </Project>
