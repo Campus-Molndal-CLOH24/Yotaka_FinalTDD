@@ -102,13 +102,14 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             //assert
             Assert.AreEqual(expected, result, 0.0001f);
         }
+        //divide by zero
         [TestMethod()]
         public void Divide_DivideByZero_ThrowException()
         {
             //act
             Assert.ThrowsException<DivideByZeroException>(() => calculator.Divide(1, 0));
         }
-        //invalid test case
+        //invalid input
         [TestMethod]
         public void Divide_InvalidInput_ThrowsFormatException()
         {
@@ -118,13 +119,14 @@ namespace Yotaka_FinalTDD.Calculater.Tests
                 float parsedA = float.Parse("a"); // "a" is not a valid number
             });
         }
+        // Null input
         [TestMethod()]
         public void Divide_NullInput_ThrowsArgumentNullException()
         {
             // Act & Assert: Null input
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                float parsedA = float.Parse(null); // null is not a valid number
+                float parsedA = float.Parse(null); // null is not a valid. 
             });
         }
 
