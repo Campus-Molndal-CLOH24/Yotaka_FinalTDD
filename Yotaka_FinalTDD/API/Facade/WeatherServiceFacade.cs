@@ -17,6 +17,10 @@ namespace Yotaka_FinalTDD.API.Facade
         }
         public string GetWeather(string city)
         {
+            if (string.IsNullOrEmpty(city))
+            {
+                throw new ArgumentException("City cannot be null or empty");
+            }
             var weatherTask = _weatherService.GetCurrentWeatherAsync(city);
             weatherTask.Wait();
             return weatherTask.Result;
