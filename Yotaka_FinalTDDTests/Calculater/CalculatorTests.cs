@@ -19,7 +19,7 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             calculator = new Calculator();
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow(1.5f, 2.5f, 4.0f)]
         [DataRow(0, 0, 0)]
         [DataRow(-1.5f, -2.5f, -4.0f)]
@@ -42,7 +42,7 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             });
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow(1.0f, 2.2f, -1.2f)]
         [DataRow(0, 0, 0)]
         [DataRow(-1.5f, -2.5f, 1.0f)]
@@ -65,7 +65,7 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             });
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow(1.0f, 2.0f, 2.0f)]
         [DataRow(0, 0, 0)]
         [DataRow(-1.5f, -2.5f, 3.75f)]
