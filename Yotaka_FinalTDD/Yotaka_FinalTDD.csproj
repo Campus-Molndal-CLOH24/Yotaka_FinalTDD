@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BankAccount\" />
     <Folder Include="Booksystem\" />
     <Folder Include="Null_check\" />
     <Folder Include="Warehouse\" />
