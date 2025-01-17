@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="Booksystem\" />
     <Folder Include="Null_check\" />
-    <Folder Include="Warehouse\" />
   </ItemGroup>
 
   <ItemGroup>
