@@ -15,15 +15,25 @@ namespace Yotaka_FinalTDD.API.Facade
         {
             _weatherService = weatherService;
         }
-        public string GetWeather(string city)
+        public async Task<string> GetWeather(string city)
         {
             if (string.IsNullOrEmpty(city))
             {
-                throw new ArgumentException("City cannot be null or empty");
+                throw new ArgumentException("City cannot be null or empty", nameof(city));
             }
-            var weatherTask = _weatherService.GetCurrentWeatherAsync(city);
-            weatherTask.Wait();
-            return weatherTask.Result;
+            try
+            {
+                return await _weatherService.GetCurrentWeatherAsync(city);
+            }
+            catch (HttpRequestException ex)
+            {
+                return $"Failed to fetch weather data: {ex.Message}";
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred: {ex.Message}";
+
+            }
         }
     }
 }

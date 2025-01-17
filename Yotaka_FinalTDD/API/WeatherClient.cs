@@ -19,8 +19,14 @@ namespace Yotaka_FinalTDD.API
 
         public Task<string> GetCurrentWeatherAsync(string city)
         {
+            var simulateData = new Dictionary<string, string> 
+            {
+                { "Stockholm", "Sunny"},
+                { "Gothenburg", "Cloudy"},
+                { "Malmö", "Raining"}
+            };
             // Simulate API call
-            return Task.FromResult("Raining");
+            return Task.FromResult(simulateData.ContainsKey(city) ? simulateData[city] : "City not found");
         }
     }
 }

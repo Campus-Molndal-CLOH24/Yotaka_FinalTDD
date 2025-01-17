@@ -23,8 +23,8 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             mockWeatherService.GetCurrentWeatherAsync("Bangkok").Returns(Task.FromResult("Warm like staying in Hell!"));
             var weatherServiceFacade = new WeatherServiceFacade(mockWeatherService);
             //act
-            var result = weatherServiceFacade.GetWeather("GBG");
-            var result1 = weatherServiceFacade.GetWeather("Bangkok");
+            var result = await weatherServiceFacade.GetWeather("GBG");
+            var result1 = await weatherServiceFacade.GetWeather("Bangkok");
             //assert
             Assert.AreEqual("Sunny", result);
             await mockWeatherService.Received().GetCurrentWeatherAsync("GBG");
@@ -40,7 +40,7 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             var weatherServiceFacade = new WeatherServiceFacade(mockWeatherService);
             
             //act and assert
-            Assert.ThrowsException<ArgumentException>(() => weatherServiceFacade.GetWeather(null));
+            Assert.ThrowsException<ArgumentException>(() => weatherServiceFacade.GetWeather(null).GetAwaiter().GetResult());
         }
         //throw exception when city is empty
         [TestMethod()]
@@ -51,7 +51,7 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             var weatherServiceFacade = new WeatherServiceFacade(mockWeatherService);
 
             //act and assert
-            Assert.ThrowsException<ArgumentException>(() => weatherServiceFacade.GetWeather(""));
+            Assert.ThrowsException<ArgumentException>(() => weatherServiceFacade.GetWeather("").GetAwaiter().GetResult());
         }
         //handle invalid city name
         [TestMethod()]
@@ -62,10 +62,30 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             mockWeatherService.GetCurrentWeatherAsync("Invalidcity").Returns(Task.FromResult("unknow"));
             var weatherServiceFacade = new WeatherServiceFacade(mockWeatherService);
             //act 
-            var result = weatherServiceFacade.GetWeather("Invalidcity");
+            var result = await weatherServiceFacade.GetWeather("Invalidcity");
             //assert
             Assert.AreEqual("unknow", result, "Faile testing");
             await mockWeatherService.Received().GetCurrentWeatherAsync("Invalidcity");
+        }
+        //Handle slow response
+        [TestMethod()]
+        public async Task GetWeather_handleSlowResponse()
+        {
+            //arrange
+            var mockWeatherService = Substitute.For<IWeatherService>();
+            mockWeatherService
+                .GetCurrentWeatherAsync("GBG")
+                .Returns(async _ =>
+                {
+                    await Task.Delay(1000);
+                    return "Sunny";
+                });
+            var weatherServiceFacade = new WeatherServiceFacade(mockWeatherService);
+            //act
+            var result = await weatherServiceFacade.GetWeather("GBG");
+            //assert
+            Assert.AreEqual("Sunny", result, "Fail testing");
+            await mockWeatherService.Received().GetCurrentWeatherAsync("GBG");
         }
 
     }
