@@ -9,30 +9,29 @@ namespace Yotaka_FinalTDD.BankAccount
     public class BankAccount
     {
         public decimal _balance { get; set; }
+        public const decimal MaxWithdraw = 500_000m; // maxa withdraw 
 
-        public decimal Deposit(decimal amount)
+        public void Deposit(decimal amount)
         {
-            if (amount > 0) 
+            
+            if (amount <= 0)
             {
-                _balance += amount;
+                throw new ArgumentException("Deposite must be grather than zero");
             }
-            else
-            {
-                throw new ArgumentOutOfRangeException("Can not deposite with negative value or zero");
-            }
-            return _balance;
+             _balance += amount;
         }
-        public decimal Withdraw(decimal amount)
+        public void Withdraw(decimal amount)
         {
-            if (amount > 0 && amount <= _balance)
+            if (amount >= MaxWithdraw)
             {
-                _balance -= amount;
+                throw new InvalidOperationException("Max withdraw 500 000 per day");
             }
-            else
+            if (amount > _balance) 
             {
-                throw new ArgumentException("Can not withdraw the value is  more than balance");
+                throw new ArgumentException("Insuffient funds");
             }
-            return _balance;
+          
+            _balance -= amount;
         }
     }
 }

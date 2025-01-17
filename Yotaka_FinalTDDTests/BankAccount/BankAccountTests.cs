@@ -19,6 +19,7 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
             _bankAccount = new BankAccount();
             _bankAccount.Deposit(100.0m); //initial deposit 100 
         }
+        //increases coorect balances
         [TestMethod()]
         [DataRow(500.0, 600.0)]
         [DataRow(100.0, 200.0)]
@@ -30,15 +31,23 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
             //assert
             Assert.AreEqual((decimal)ExpectedBalances, _bankAccount._balance, "Failed deposit money");
         }
-
+        //can not accept negative value
         [TestMethod]
         [DataRow(-100.0)] //negative value
         public void Deposit_NegativeValue_ShouldThrowException(double depositAmount)
         {
             //act and assert
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => _bankAccount.Deposit((decimal)depositAmount), "Failed deposit money with exception");
+            Assert.ThrowsException<ArgumentException>(() => _bankAccount.Deposit((decimal)depositAmount), "Failed deposit money with exception");
+        }
+        // deposit cannot accept zero value
+        [TestMethod()]
+        public void Deposit_ShouldThrowArgumentException_WhenAmountIsZero()
+        {
+            // act and assert
+            Assert.ThrowsException<ArgumentException>(() => _bankAccount.Deposit(0), "Failed deposit money with exception");
         }
 
+        //withdraw return correct balances
         [TestMethod()]
         [DataRow(50.0, 50.0)]
         [DataRow(100.0, 0.0)]
@@ -57,6 +66,18 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
         {
             //act and assert
             Assert.ThrowsException<ArgumentException>(() => _bankAccount.Withdraw((decimal)withdrawAmount), "Failed withdraw money with exception");
+        }
+        //max withdraw 500,000 per day
+        [TestMethod()]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void Withdraw_maxwithdraw_ShouldThrowExcep() 
+        {
+            //arrange
+            decimal maxwithdraw = 500_000m;
+            _bankAccount.Deposit(maxwithdraw);
+            //act
+            _bankAccount.Withdraw(maxwithdraw + 1); //withdraw more than maxwithdraw (trigger invalid exception)
+
         }
     }
 }
