@@ -9,7 +9,7 @@ this project consist of following componets:
 5. Warehouse handling : A class for warehouse handling, to perform add and remove items from the warehouse.
 6. Booking System : A class for booking system, to perform booking avalible time slot and shows list of booked time slot.
 7. Null Kontroll :1234: A class for null kontroll, to perform null check and return the value in boolean  if it is null or null, also shows the list 
-8. which one contains null value.
+which one contains null value.
 
 Under the jouny of testing driven development, I have created the test cases for each of the above components and then implemented the code to pass the test cases.
 also, use Visual Studio Code as an IDE to perform tasks.
