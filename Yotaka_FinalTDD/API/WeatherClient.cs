@@ -19,12 +19,16 @@ namespace Yotaka_FinalTDD.API
 
         public Task<string> GetCurrentWeatherAsync(string city)
         {
-            var simulateData = new Dictionary<string, string> 
+            var simulateData = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) // case-insensitive. 
             {
                 { "Stockholm", "Sunny"},
                 { "Gothenburg", "Cloudy"},
                 { "Malmö", "Raining"}
             };
+            if (string.IsNullOrEmpty(city))
+            {
+                throw new ArgumentException("City cannot be null or empty", nameof(city));
+            }
             // Simulate API call
             return Task.FromResult(simulateData.ContainsKey(city) ? simulateData[city] : "City not found");
         }
