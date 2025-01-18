@@ -29,6 +29,7 @@ namespace Yotaka_FinalTDD.API.Tests
             //assert
             Assert.AreEqual("Raining", result, "Weather for Malmö should be raining ");
         }
+
         //It should return "City not found" for an invalid city (Lund).
         [TestMethod()]
         public async Task GetCurrentWeatherAsync_ShouldReturnCityNotFound_ForInvalidCity()
@@ -40,6 +41,7 @@ namespace Yotaka_FinalTDD.API.Tests
             //assert
             Assert.AreEqual("City not found", result, "City Lund should not be found");
         }
+
         //it should return correct weather for another valid city (Stockholm).
         [TestMethod()]
         public async Task GetCurrentWeatherAsync_ShouldReturnWeather_ForAnotherValidCity()
@@ -51,6 +53,7 @@ namespace Yotaka_FinalTDD.API.Tests
             //assert
             Assert.AreEqual("Sunny", result, "Weather for Stockholm should be sunny ");
         }
+
         //It should throw an ArgumentException for a null  and empty city.
         [TestMethod()]
         public async Task GetCurrentWeatherAsync_ShouldThrowArgumentException_ForNullCity()
@@ -74,7 +77,7 @@ namespace Yotaka_FinalTDD.API.Tests
             //assert
             Assert.AreEqual("Cloudy", result, "Weather for gothenburg should be cloudy ");
         }
-        //GetCurrentWeatherAsync_ShouldReturnCityNotFound_ForCityWithSpecialCharacters
+        //It should return "City not found" for a city with special characters (M@lmö!).
         [TestMethod()]
         public async Task GetCurrentWeatherAsync_ShouldReturnCityNotFound_ForCityWithSpecialCharacters()
         {
