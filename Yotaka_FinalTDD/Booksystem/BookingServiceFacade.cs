@@ -9,9 +9,14 @@ namespace Yotaka_FinalTDD.Booksystem
 {
     public class BookingServiceFacade
     {
-        public async Task<bool> BookRoomAsync(string roomName, DateTime startDate, DateTime endDate)
+        private readonly BookingSystem _bookingSystem;
+        public BookingServiceFacade(BookingSystem bookingSystem)
+         {
+            _bookingSystem = bookingSystem;
+         }
+        public async Task<bool> BookSlot( DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            return await _bookingSystem.BookTimeSlot( startDate, endDate);  
         }
     }
     
