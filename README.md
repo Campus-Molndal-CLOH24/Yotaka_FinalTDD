@@ -23,7 +23,7 @@ also, use Visual Studio Code as an IDE to perform tasks.
 ## Installation
 1. Clone the repository
 ```
-
+git clone https://github.com/Campus-Molndal-CLOH24/Yotaka_FinalTDD.git
 ```
 2. Let the IDE to install the required packages
 3. Start testing the components
