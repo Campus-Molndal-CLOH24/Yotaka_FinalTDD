@@ -28,6 +28,8 @@ namespace Yotaka_FinalTDD.Null_check.Tests
             Assert.IsTrue(result2, "Fail validation");
             Assert.IsFalse(result3, "Fail validation");
         }
+
+
         //return false
         [TestMethod()]
         public void IsNull_ShouldReturnFalse_ForNullObject()
@@ -46,6 +48,8 @@ namespace Yotaka_FinalTDD.Null_check.Tests
             Assert.IsFalse(result2, "Fail validation");
             Assert.IsFalse(result3, "Fail validation");
         }
+
+
         //returnerar rätt lista för en klass med vissa null-properties.
         [TestMethod()]
         public void GetNullProperties_ShouldReturnCorrectPropertyNames()
@@ -59,6 +63,8 @@ namespace Yotaka_FinalTDD.Null_check.Tests
             // Assert
             CollectionAssert.AreEqual(new List<string> { "Age", "Adress" }, result); //return list of null properties
         }
+
+
         //handle with null throw exception
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -70,6 +76,8 @@ namespace Yotaka_FinalTDD.Null_check.Tests
             // Act
             objectValidator.GetNullProperties(obj);
         }
+
+
         //return an empty list for no null properties
         [TestMethod()]
         public void GetNullProperties_ShouldReturnEmptyList_ForNoNullProperties()

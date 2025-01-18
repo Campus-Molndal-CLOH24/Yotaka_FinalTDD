@@ -9,7 +9,7 @@ namespace Yotaka_FinalTDD.BankAccount
     public class BankAccount
     {
         public decimal _balance { get; set; }
-        public const decimal MaxWithdraw = 500_000m; // maxa withdraw 
+        public const decimal MaxWithdraw = 500_000m; 
 
         public void Deposit(decimal amount)
         {

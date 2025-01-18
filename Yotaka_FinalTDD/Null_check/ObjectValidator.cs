@@ -8,14 +8,13 @@ namespace Yotaka_FinalTDD.Null_check
 {
     public class ObjectValidator
     {
-        // Check if the object is null, return true if it is null and false if it is not null
         public bool IsNull(object obj)
         {
             return obj == null;
         }
         public List<string> GetNullProperties(object obj) 
         {
-            ArgumentNullException.ThrowIfNull(obj); // Throw an ArgumentNullException if the object is null
+            ArgumentNullException.ThrowIfNull(obj); 
 
             List<string> nullProperties = new List<string>();
             var properties = obj.GetType().GetProperties();

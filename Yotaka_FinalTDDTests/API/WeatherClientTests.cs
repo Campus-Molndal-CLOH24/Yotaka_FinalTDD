@@ -77,6 +77,8 @@ namespace Yotaka_FinalTDD.API.Tests
             //assert
             Assert.AreEqual("Cloudy", result, "Weather for gothenburg should be cloudy ");
         }
+
+
         //It should return "City not found" for a city with special characters (M@lmö!).
         [TestMethod()]
         public async Task GetCurrentWeatherAsync_ShouldReturnCityNotFound_ForCityWithSpecialCharacters()

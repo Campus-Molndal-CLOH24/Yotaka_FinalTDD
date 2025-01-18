@@ -40,32 +40,34 @@ namespace Yotaka_FinalTDD.Booksystem.Tests
             await _iRoomsystem.Received().BookTimeSlot(startDate, endDate);
         }
 
-        //return false when booking is not successful
+        //return false when booking is not successful(it will return false when booking is the same date)
         [TestMethod()]
         public async Task BookingServiceFacade_ShouldReturnFalse_WhenBookingFails()
         {
             //arrange
-            //it will return false when booking is the same date
             var startDate = new DateTime(2025, 01, 10, 0, 0, 0, DateTimeKind.Utc);
             var endDate = new DateTime(2025, 01, 12, 0, 0, 0, DateTimeKind.Utc);
             _iRoomsystem.BookTimeSlot(startDate, endDate).Returns(Task.FromResult(false));
+
             //act
             var result = await _bookingServiceFacade.BookSlot(startDate, endDate);
+
             //assert
             Assert.IsFalse(result, "Booking should not be successful");
             await _iRoomsystem.Received().BookTimeSlot(startDate, endDate);
         }
 
-        //return false when booking start date is after end date
+        //return false when booking start date is after end date(it will return false when booking start date is after end date).
         [TestMethod()]
         public async Task BookingServiceFacade_ShouldReturnFalse_WhenStartDateIsAfterEndDate()
         {
             //arrange
-            //it will return false when booking start date is after end date
             var startDate = new DateTime(2025, 01, 12, 0, 0, 0, DateTimeKind.Utc);
             var endDate = new DateTime(2025, 01, 10, 0, 0, 0, DateTimeKind.Utc);
+
             //act
             var result = await _bookingServiceFacade.BookSlot(startDate, endDate);
+
             //assert
             Assert.IsFalse(result, "Booking should not be successful");
             await _iRoomsystem.DidNotReceive().BookTimeSlot(startDate, endDate);
@@ -76,12 +78,13 @@ namespace Yotaka_FinalTDD.Booksystem.Tests
         public async Task BookingServiceFacade_ShouldThrowArgumentException_WhenDateIsNullOrEmpty()
         {
             //arrange
-            //it will throw an exception when date is null
             DateTime? startDate = null;
             var endDate = new DateTime(2025, 01, 12, 0, 0, 0, DateTimeKind.Utc);
             _iRoomsystem.BookTimeSlot(Arg.Any<DateTime>(), endDate).Returns(Task.FromResult(true));
+
             //act
             var ex = await Assert.ThrowsExceptionAsync<ArgumentException>(() => _bookingServiceFacade.BookSlot(startDate ?? default(DateTime), endDate));
+            
             //assert
             Assert.AreEqual("Date cannot be null", ex.Message);
             await _iRoomsystem.DidNotReceive().BookTimeSlot(Arg.Any<DateTime>(), endDate);

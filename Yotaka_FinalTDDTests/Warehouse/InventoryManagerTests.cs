@@ -23,6 +23,8 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Assert
             Assert.AreEqual(quantity, inventoryManager.Items[itemName], "Failed add item");
         }
+
+
         //handle empty item name
         [TestMethod()]
         [ExpectedException(typeof(Exception))]
@@ -35,6 +37,8 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Act
             inventoryManager.AddItem(itemName, quantity);
         }
+
+
         //handle negative quantity
         [TestMethod()]
         [ExpectedException(typeof(Exception))]
@@ -47,6 +51,8 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Act
             inventoryManager.AddItem(itemName, quantity);
         }
+
+
         //return correct result
         [TestMethod()]
         public void RemoveItem_ShouldReturnCorrectresult()
@@ -61,6 +67,8 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Assert
             Assert.AreEqual(3, inventoryManager.Items[itemName], "Failed remove item"); //check if quantity is correct result 
         }
+
+
         //try to remove item that is not in the list
         [TestMethod()]
         [ExpectedException(typeof(Exception))]
@@ -73,7 +81,9 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Act
             inventoryManager.RemoveItem(itemName, quantity);
         }
-        //hadle empty item name
+
+
+        //handle empty item name
         [TestMethod()]
         [ExpectedException(typeof(Exception))]
         public void RemoveItem_ShouldThrowException_WhenItemNameEmpty()
@@ -85,6 +95,8 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Act
             inventoryManager.RemoveItem(itemName, quantity);
         }
+
+
         //handle with removing quantity that is greater than available stock
         [TestMethod()]
         [ExpectedException(typeof(Exception))]
@@ -98,6 +110,8 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Act
             inventoryManager.RemoveItem(itemName, quantity);
         }
+
+
         //return name of item that has quantity of 0
         [TestMethod()]
         public void GetOutOfStockItems_ShouldReturnEmptyList_WhenNoItemsOutOfStock()
@@ -111,6 +125,8 @@ namespace Yotaka_FinalTDD.Warehouse.Tests
             // Assert
             Assert.AreEqual(0, outOfStockItems.Count, "Failed get out of stock items");
         }
+
+
         //return name of item that has quantity of 0
         [TestMethod()]
         public void GetOutOfStockItems_ShouldReturnListOfItems_WhenItemsOutOfStock()

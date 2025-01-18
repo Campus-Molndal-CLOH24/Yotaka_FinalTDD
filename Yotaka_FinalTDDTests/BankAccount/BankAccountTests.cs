@@ -15,11 +15,12 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
         [TestInitialize]
         public void Setup()
         {
-            // Initialize a fresh account before each test (aarange )
             _bankAccount = new BankAccount();
-            _bankAccount.Deposit(100.0m); //initial deposit 100 
+            _bankAccount.Deposit(100.0m); 
         }
-        //increases coorect balances
+
+
+        //increases correct balances
         [TestMethod()]
         [DataRow(500.0, 600.0)]
         [DataRow(100.0, 200.0)]
@@ -31,6 +32,8 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
             //assert
             Assert.AreEqual((decimal)ExpectedBalances, _bankAccount._balance, "Failed deposit money");
         }
+
+
         //can not accept negative value
         [TestMethod]
         [DataRow(-100.0)] //negative value
@@ -39,6 +42,8 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
             //act and assert
             Assert.ThrowsException<ArgumentException>(() => _bankAccount.Deposit((decimal)depositAmount), "Failed deposit money with exception");
         }
+
+
         // deposit cannot accept zero value
         [TestMethod()]
         public void Deposit_ShouldThrowArgumentException_WhenAmountIsZero()
@@ -46,6 +51,7 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
             // act and assert
             Assert.ThrowsException<ArgumentException>(() => _bankAccount.Deposit(0), "Failed deposit money with exception");
         }
+
 
         //withdraw return correct balances
         [TestMethod()]
@@ -59,6 +65,8 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
             Assert.AreEqual((decimal)ExpectedBalances, _bankAccount._balance, "Failed withdraw money");
 
         }
+
+
         //withdraw more than balance
         [TestMethod()]
         [DataRow(200.0)]
@@ -67,6 +75,8 @@ namespace Yotaka_FinalTDD.BankAccount.Tests
             //act and assert
             Assert.ThrowsException<ArgumentException>(() => _bankAccount.Withdraw((decimal)withdrawAmount), "Failed withdraw money with exception");
         }
+
+
         //max withdraw 500,000 per day
         [TestMethod()]
         [ExpectedException(typeof(InvalidOperationException))]

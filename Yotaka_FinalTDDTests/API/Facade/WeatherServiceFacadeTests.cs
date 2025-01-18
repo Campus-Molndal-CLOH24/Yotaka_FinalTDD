@@ -44,6 +44,8 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             //act and assert
             Assert.ThrowsException<ArgumentException>(() => weatherServiceFacade.GetWeather(null).GetAwaiter().GetResult());
         }
+
+
         //throw exception when city is empty
         [TestMethod()]
         public async Task GetWeather_throwExceptionWhenCityIsEmpty()

@@ -13,8 +13,7 @@ namespace Yotaka_FinalTDD.Warehouse
         {
             if (string.IsNullOrWhiteSpace(itemName)) { throw new Exception("Item name can not be  empty or null"); }
             if (quantity < 0) { throw new Exception("Quantity can not be negative"); }
-            // if the item already exists, add the quantity to the existing quantity
-            // otherwise, add the item to the dictionary
+         
             if (Items.ContainsKey(itemName))
             {
                 Items[itemName] += quantity;
@@ -23,8 +22,8 @@ namespace Yotaka_FinalTDD.Warehouse
             {
                 Items.Add(itemName, quantity);
             }
-
         }
+
         public void RemoveItem(string itemName, int quantity)
         {
             if (!Items.ContainsKey(itemName)) { throw new Exception("Item not found"); }
@@ -33,9 +32,10 @@ namespace Yotaka_FinalTDD.Warehouse
             
             Items[itemName] -= quantity;
         }
+
         public List<string> GetOutOfStockItems() 
         {
-            return Items.Where(item => item.Value == 0).Select(item => item.Key).ToList(); // LINQ returns a list of items that have a quantity of 0
+            return Items.Where(item => item.Value == 0).Select(item => item.Key).ToList(); 
         }
     }
 }

@@ -32,10 +32,13 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             //assert
             Assert.AreEqual(expected, result, 0.0001f);
         }
+
+
+        //throw exception when input is invalid
         [TestMethod()]
         public void Add_InvalidInput_ThrowsFormatException()
         {
-            // Act & Assert: Invalid numeric input
+            // Act & Assert
             Assert.ThrowsException<FormatException>(() =>
             {
                 float parsedA = float.Parse("a"); // "a" is not a valid number
@@ -55,10 +58,12 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             //assert
             Assert.AreEqual(expected, result, 0.0001f);
         }
+
+
         [TestMethod()]
         public void Subtract_InvalidInput_ThrowsFormatException()
         {
-            // Act & Assert: Invalid numeric input
+            // Act & Assert
             Assert.ThrowsException<FormatException>(() =>
             {
                 float parsedA = float.Parse("a"); // "a" is not a valid number
@@ -102,6 +107,8 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             //assert
             Assert.AreEqual(expected, result, 0.0001f);
         }
+
+
         //divide by zero
         [TestMethod()]
         public void Divide_DivideByZero_ThrowException()
@@ -109,6 +116,8 @@ namespace Yotaka_FinalTDD.Calculater.Tests
             //act
             Assert.ThrowsException<DivideByZeroException>(() => calculator.Divide(1, 0));
         }
+
+
         //invalid input
         [TestMethod]
         public void Divide_InvalidInput_ThrowsFormatException()
@@ -119,11 +128,13 @@ namespace Yotaka_FinalTDD.Calculater.Tests
                 float parsedA = float.Parse("a"); // "a" is not a valid number
             });
         }
+
+
         // Null input
         [TestMethod()]
         public void Divide_NullInput_ThrowsArgumentNullException()
         {
-            // Act & Assert: Null input
+            // Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
                 float parsedA = float.Parse(null); // null is not a valid. 

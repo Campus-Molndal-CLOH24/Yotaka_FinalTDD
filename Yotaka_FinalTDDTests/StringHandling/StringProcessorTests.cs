@@ -21,6 +21,8 @@ namespace Yotaka_FinalTDD.StringHandling.Tests
             // Assert
             Assert.AreEqual("hello", result);
         }
+
+
         //test case when input is  empty string
         [TestMethod()]
         public void ToLowerCase_EmptyString_returncorrectresult()
@@ -32,6 +34,8 @@ namespace Yotaka_FinalTDD.StringHandling.Tests
             // Assert
             Assert.AreEqual("", result, $"Failed to return {result}");
         }
+
+
         //test case when input is  null
         [TestMethod()]
         public void ToLowerCase_Null_returncorrectresult()
@@ -43,7 +47,9 @@ namespace Yotaka_FinalTDD.StringHandling.Tests
             // Assert
             Assert.AreEqual(null, result, $"Failed to return {result}");
         }
-        
+
+
+        //test case delect all special tecken
         [TestMethod()]
         public void Sanitize_delectallspecialtecken_returncorrectresult()
         {
@@ -54,6 +60,8 @@ namespace Yotaka_FinalTDD.StringHandling.Tests
             // Assert
             Assert.AreEqual("Hello", result);
         }
+
+
         //return result if it maches the expected result between two strings
         [TestMethod()]
         public void AreEqual_compare_returncorrectresult()

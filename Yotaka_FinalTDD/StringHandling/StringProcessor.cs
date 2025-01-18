@@ -23,15 +23,14 @@ namespace Yotaka_FinalTDD.StringHandling
         }
         public bool AreEqual(string input1, string input2)
         {
-            //check if it is null or empty
             if (string.IsNullOrEmpty(input1) || string.IsNullOrEmpty(input2))
             {
                 return false;
             }
             //Sanitize the inputs before comparing
+            //retrun ture if the two strings are equal after sanitization and lowercase
             string input1Sanitized = Sanitize(input1);
             string input2Sanitized = Sanitize(input2);
-            //retrun ture if the two strings are equal after sanitization and lowercase
             return input1Sanitized.Equals(input2Sanitized, StringComparison.OrdinalIgnoreCase);
         }
     }
