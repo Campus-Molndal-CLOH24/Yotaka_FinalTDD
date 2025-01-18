@@ -12,6 +12,11 @@ namespace Yotaka_FinalTDD.Booksystem
     {
         // A list to keep track of all the bookings.
         public List<Booking> Bookings { get; private set; } = new();
+        private readonly IRoomsystem _roomsystem;
+        public BookingSystem(IRoomsystem roomsystem)
+        {
+            _roomsystem = roomsystem;
+        }
 
         public async Task<bool> BookTimeSlot(DateTime startDate, DateTime Endtime)
         {
@@ -31,12 +36,13 @@ namespace Yotaka_FinalTDD.Booksystem
             }
             //if no overlap, add the new booking
             Bookings.Add(new Booking(startDate, Endtime));
-            return true;
+            // Call the BookTimeSlot method on the _roomsystem mock changed from return true to return await _roomsystem.BookTimeSlot(startDate, Endtime) becuase mock data is not being used
+            return await _roomsystem.BookTimeSlot(startDate, Endtime); 
         }
 
         public async Task<List<DateTime>> GetAvailableTimeSlots()
         {
-            return await Task.FromResult(Bookings.Select(booking => booking.Starttime).ToList()); // return all the start times of the bookings(moch data)
+            return await Task.FromResult(Bookings.Select(booking => booking.Starttime).ToList()); // return all the start times of the bookings(mock data)
         }
     }
 }
