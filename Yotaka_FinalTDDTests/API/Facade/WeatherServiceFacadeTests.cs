@@ -31,6 +31,8 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             Assert.AreEqual("Warm like staying in Hell!", result1);
             await mockWeatherService.Received().GetCurrentWeatherAsync("Bangkok");
         }
+
+
         //throw exception when city is null
         [TestMethod()]
         public async Task GetWeather_throwExceptionWhenCityIsNull()
@@ -53,6 +55,8 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             //act and assert
             Assert.ThrowsException<ArgumentException>(() => weatherServiceFacade.GetWeather("").GetAwaiter().GetResult());
         }
+
+
         //handle invalid city name
         [TestMethod()]
         public async Task GetWeather_handleInvalidCityName()
@@ -67,6 +71,8 @@ namespace Yotaka_FinalTDD.API.Facade.Tests
             Assert.AreEqual("unknow", result, "Faile testing");
             await mockWeatherService.Received().GetCurrentWeatherAsync("Invalidcity");
         }
+
+
         //Handle slow response
         [TestMethod()]
         public async Task GetWeather_handleSlowResponse()
