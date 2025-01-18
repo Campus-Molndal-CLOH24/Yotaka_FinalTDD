@@ -34,5 +34,5 @@ git clone https://github.com/Campus-Molndal-CLOH24/Yotaka_FinalTDD.git
 
 
 <div align="center">
-  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZ1MW5kYjg0Z3czbHdsanl3NTJqNDN6amJ3MnhuMXBoMjQ0M2gzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4zceKGWTSwv9889U45/giphy.gif" alt="My Image" width="200">
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZ1MW5kYjg0Z3czbHdsanl3NTJqNDN6amJ3MnhuMXBoMjQ0M2gzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4zceKGWTSwv9889U45/giphy.gif" alt="My Image" width="400">
 </div>
