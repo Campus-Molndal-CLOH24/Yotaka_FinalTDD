@@ -7,7 +7,7 @@ this project consist of following componets:
 3. API : A class for API testing, to get the data from weather service by mocking data.
 4. Bank Account :100: A class for bank account, to perform deposit and withdraw.
 5. Warehouse handling : A class for warehouse handling, to perform add and remove items from the warehouse.
-6. Booking System : A class for booking system, to perform booking avalible time slot and shows list of booked time slot.
+6. Booking System : A class for booking system, to perform booking available time slot and shows list of booked time slot.
 7. Null Kontroll :1234: A class for null kontroll, to perform null check and return the value in boolean  if it is null or null, also shows the list 
 which one contains null value.
 
