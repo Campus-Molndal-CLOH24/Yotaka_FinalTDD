@@ -18,10 +18,10 @@ namespace Yotaka_FinalTDD.Booksystem
             _roomsystem = roomsystem;
         }
 
-        public async Task<bool> BookTimeSlot(DateTime startDate, DateTime Endtime)
+        public async Task<bool> BookTimeSlot(DateTime startDate, DateTime endDate)
         {
             //check if the new booking is valid (start time is before end time)
-            if (startDate >= Endtime)
+            if (startDate >= endDate)
             {
                 return false;
             }
@@ -29,15 +29,15 @@ namespace Yotaka_FinalTDD.Booksystem
             foreach (var booking in Bookings)
             {
                 // If the new time is not completely before or after an existing booking, it overlaps.
-                if (!(Endtime <= booking.Starttime || startDate >= booking.Endtime))
+                if (!(endDate <= booking.Starttime || startDate >= booking.Endtime))
                 {
                     return false;
                 }
             }
             //if no overlap, add the new booking
-            Bookings.Add(new Booking(startDate, Endtime));
+            Bookings.Add(new Booking(startDate, endDate));
             // Call the BookTimeSlot method on the _roomsystem mock changed from return true to return await _roomsystem.BookTimeSlot(startDate, Endtime) becuase mock data is not being used
-            return await _roomsystem.BookTimeSlot(startDate, Endtime); 
+            return await _roomsystem.BookTimeSlot(startDate, endDate); 
         }
 
         public async Task<List<DateTime>> GetAvailableTimeSlots()

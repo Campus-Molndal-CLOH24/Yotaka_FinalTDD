@@ -16,6 +16,10 @@ namespace Yotaka_FinalTDD.Booksystem
          }
         public async Task<bool> BookSlot( DateTime startDate, DateTime endDate)
         {
+            if (startDate == default(DateTime))
+            {
+                throw new ArgumentException("Date cannot be null");
+            }
             return await _bookingSystem.BookTimeSlot( startDate, endDate);  
         }
     }
