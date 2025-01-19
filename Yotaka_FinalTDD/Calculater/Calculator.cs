@@ -22,11 +22,13 @@ namespace Yotaka_FinalTDD.Calculater
         }
         public float Divide(float a, float b)
         {
-            if (b == 0)
+            switch (b)
             {
-                throw new DivideByZeroException("Cannot divide by zero.");
+                case 0.0f:
+                    throw new DivideByZeroException("Cannot divide by zero.");
+                default:
+                    return a / b;
             }
-            return a / b;
         }
 
     }
