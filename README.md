@@ -11,7 +11,7 @@ this project consist of following componets:
 7. Null Kontroll :1234: A class for null kontroll, to perform null check and return the value in boolean  if it is null or null, also shows the list 
 which one contains null value.
 
-Under the jouny of testing driven development, I have created the test cases for each of the above components and then implemented the code to pass the test cases.
+Under the journy of testing driven development, I have created the test cases for each of the above components and then implemented the code to pass the test cases.
 also, use Visual Studio Code as an IDE to perform tasks.
 
 ## Requirements
