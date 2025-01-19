@@ -42,7 +42,11 @@ Tycker det ser komplett ut och att alla testerna är bra skrivna och täcker alla 
 ### Ett förändringsförslag 
 
 jag kan komma på är i Null uppgiften, ObjectValidatorTest.cs,
-Namnet på metoden IsNull_ShouldReturnFalse_ForNullObject är lite missvisande eftersom 
+Namnet på metoden
+````csharp
+IsNull_ShouldReturnFalse_ForNullObject 
+````
+Den är lite missvisande eftersom 
 testet inte bara kontrollerar att metoden returnerar false för ett null-objekt,
 utan också inkluderar scenarier för icke-null objekt.
 Ett bättre namn som beskriver hela testets syfte kan vara t.ex:

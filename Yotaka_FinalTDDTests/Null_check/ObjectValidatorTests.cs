@@ -32,7 +32,7 @@ namespace Yotaka_FinalTDD.Null_check.Tests
 
         //return false
         [TestMethod()]
-        public void IsNull_ShouldReturnFalse_ForNullObject()
+        public void IsNull_ShouldReturnExpectedResult_ForVariousObjects()
         {
             // Arrange
             ObjectValidator objectValidator = new ObjectValidator();
